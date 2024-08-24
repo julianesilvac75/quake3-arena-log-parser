@@ -3,7 +3,7 @@ require "test_helper"
 class LogParserTest < ActiveSupport::TestCase
   def setup
     @log_file_path = Rails.root.join("test", "fixtures", "files", "qgames.log")
-    @log_parser = LogParser.new
+    @log_parser = LogParser.new(@log_file_path)
   end
 
   test "should parse logs and return array of logs" do
