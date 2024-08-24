@@ -1,2 +1,7 @@
-<h1>Logs#parse</h1>
-<p>Find me in app/views/logs/parse.html.erb</p>
+<h1>Game Logs</h1>
+
+<ul>
+  <% @logs.each do |log|%>
+  <li><%= log %></li>
+  <% end %>
+</ul>
