@@ -17,6 +17,9 @@ class LogsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get parsed logs" do
     assert_response :success
-    # assert_not_nil assigns(:logs), "Did not get logs"
+
+    assert_select "h1", "Game Logs", "Game Logs title is not on the page"
+    assert_select "li", "0:00 InitGame", "Logs are not on the page"
+    assert_select "li", "1:26 Kill", "Logs are not on the page"
   end
 end
