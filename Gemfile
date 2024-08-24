@@ -58,4 +58,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "mocha"
+  gem "rails-controller-testing"
 end
