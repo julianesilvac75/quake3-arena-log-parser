@@ -23,21 +23,23 @@ class LogParser
   end
 
   def create_match
-      Match.create
-      @current_match = Match.last
+      new_match = Match.create
+      @current_match = new_match.id
+
+      new_match
   end
 
   private
 
   def filter_log(log)
-    # @logs_categories = [ "ClientUserinfoChanged:", "Kill:" ]
+    @logs_categories = [ "ClientUserinfoChanged:", "Kill:" ]
 
-    # @logs_categories.each do |category|
-    #   if log.include?(category)
-    #     return log
-    #   end
-    # end
+    @logs_categories.each do |category|
+      if log.include?(category)
+        return log
+      end
+    end
 
-    # nil
+    nil
   end
 end
