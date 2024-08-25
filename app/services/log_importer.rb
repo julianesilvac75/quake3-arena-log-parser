@@ -18,11 +18,11 @@ class LogImporter
 
     return if file
 
-    ImportLog.create(source_file: @log_file_path)
+    new_file = ImportLog.create(source_file: @log_file_path)
 
     logs = LogParser.new(@log_file_path)
     logs.parse
 
-    file.update_attribute(:imported, true)
+    new_file.update_attribute(:imported, true)
   end
 end
