@@ -1,7 +1,7 @@
 require "test_helper"
 
 class ImportLogTest < ActiveSupport::TestCase
-  test "should create a new import object with imported value being true" do
+  test "should create a new import registry with imported value being true" do
     @log_file_path = Rails.root.join("test", "fixtures", "files", "qgames.log").to_s
     new_import = ImportLog.new(source_file: @log_file_path, imported: true)
 
