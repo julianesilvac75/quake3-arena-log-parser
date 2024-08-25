@@ -26,11 +26,13 @@ class LogImporterTest < ActiveSupport::TestCase
     assert_equal false, result, "Should return false"
   end
 
-  test "should import log only if it wasn't imported yet" do
-    assert @new_import.import, "Should import log if it doesn't exist yet"
+  test "should not import log if it already exists" do
+    @stubbed_object = ImportLog.new(source_file: @log_file_path, imported: true)
 
-    result2 = LogImporter.new(@log_file_path)
+    ImportLog.expects(:where).returns([ @stubbed_object ])
 
-    assert_not result2.import, "Should not import log if it already exists"
+    result = @new_import.import
+
+    assert_equal "Log data was already imported.", result, "Should not import log data if it already exists"
   end
 end
