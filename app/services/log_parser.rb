@@ -1,5 +1,4 @@
 class LogParser
-  
   def initialize(log_file_path)
     @log_file_path = log_file_path
   end
@@ -12,8 +11,6 @@ class LogParser
         logs << filtered_line
       end
     end
-
-    puts logs
 
     logs
   end
