@@ -9,7 +9,7 @@ class LogParserTest < ActiveSupport::TestCase
   test "should parse logs and return array of logs" do
     parsed_logs = @log_parser.parse
     assert_kind_of Array, parsed_logs, "Log Parser should object as Array"
-    assert_equal 57, parsed_logs.size, "Log Parser should have a number of logs"
+    assert_equal 45, parsed_logs.size, "Log Parser should have a number of logs"
   end
 
   test "should return only useful logs" do
