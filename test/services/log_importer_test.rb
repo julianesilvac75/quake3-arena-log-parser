@@ -6,12 +6,12 @@ class LogImporterTest < ActiveSupport::TestCase
   end
 
   test "should import log only if it wasn't imported yet" do
-    result1 = LogImporter.import(@log_file_path)
+    result1 = LogImporter.new(@log_file_path)
 
-    assert result1
+    assert result1.import
 
-    result2 = LogImporter.import(@log_file_path)
+    result2 = LogImporter.new(@log_file_path)
 
-    assert_not result2
+    assert_not result2.import
   end
 end
