@@ -21,4 +21,17 @@ class LogParserTest < ActiveSupport::TestCase
       assert @logs_categories.any? { |word| log.include?(word) }, "Each log should contain at least one of the useful log categories"
     end
   end
+
+  test "shoud create a new Match object when the log is valid" do
+    parsed_logs = @log_parser.parse
+
+    parsed_logs.each do |log|
+      if log.include?("InitGame:")
+        new_match = Match.create
+
+        assert new_match.is_a?(Match), "Match object should be created"
+        assert new_match.id.present?, "Match object should have an id"
+      end
+    end
+  end
 end
