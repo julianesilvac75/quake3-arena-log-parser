@@ -12,9 +12,10 @@ class LogImporterTest < ActiveSupport::TestCase
 
     ImportLog.expects(:where).returns([ @stubbed_object ])
 
-    result = LogImporter.find_file("path/to/log.log")
+    result = LogImporter.find_file(@log_file_path)
 
-    assert_equal @stubbed_object, result, "Should return the import log"
+    assert_equal @stubbed_object, result, "Should return the import log registry"
+    assert_kind_of ImportLog, result
   end
 
   test "should import log only if it wasn't imported yet" do
