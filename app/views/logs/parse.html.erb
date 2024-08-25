@@ -1,5 +1,9 @@
 <h1>Game Logs</h1>
 
+<div>
+  Total matches: <%= @matches.size%>
+</div>
+
 <ul>
   <% @logs.each do |log|%>
   <li><%= log %></li>
