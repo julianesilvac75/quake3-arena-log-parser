@@ -18,7 +18,7 @@ class LogImporterTest < ActiveSupport::TestCase
     assert_kind_of ImportLog, result
   end
 
-  test "should return false if the log file registry doesn't exist" do
+  test "should return false if the log file registry doesn't exists" do
     ImportLog.expects(:where).returns([])
 
     result = LogImporter.find_file("non/existent/log_file.log")
@@ -41,7 +41,6 @@ class LogImporterTest < ActiveSupport::TestCase
 
     ImportLog.expects(:where).returns([])
     ImportLog.expects(:create).returns(@stubbed_object)
-
 
     result = @new_import.import
 
