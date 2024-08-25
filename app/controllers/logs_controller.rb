@@ -1,12 +1,10 @@
 class LogsController < ApplicationController
   def initialize
-    @matches = Match.all
+    @log_file_path = Rails.root.join("lib", "assets", "qgames.log")
   end
+  def index
+    log_parser = LogParser.new(@log_file_path)
 
-  def parse
-    log_file_path = File.join("lib", "assets", "qgames.log")
-    log_parser = LogParser.new(log_file_path)
-    @logs = log_parser.parse
-    @matches
+    @logs = log_parser.filter_logs
   end
 end
