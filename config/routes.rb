@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get "logs/parse", to: "logs#parse"
+  root "logs#index"
+  get "/logs", to: "logs#index"
+  # get "logs/parse", to: "logs#parse"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
