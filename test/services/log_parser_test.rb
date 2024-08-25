@@ -7,8 +7,18 @@ class LogParserTest < ActiveSupport::TestCase
   end
 
   test "should parse logs and return array of logs" do
-    logs = @log_parser.parse
-    assert_kind_of Array, logs, "Log Parser didn't return an array of logs"
-    assert_equal 57, logs.size, "Log size didn't match"
+    parsed_logs = @log_parser.parse
+    assert_kind_of Array, parsed_logs, "Log Parser should object as Array"
+    assert_equal 57, parsed_logs.size, "Log Parser should have a number of logs"
+  end
+
+  test "should return only useful logs" do
+    @logs_categories = [ "InitGame:", "ClientUserinfoChanged:", "Kill:" ]
+    parsed_logs = @log_parser.parse
+
+    parsed_logs.each do |log|
+      assert log.is_a?(String), "Each log should be a string"
+      assert @logs_categories.any? { |word| log.include?(word) }, "Each log should contain at least one of the useful log categories"
+    end
   end
 end
