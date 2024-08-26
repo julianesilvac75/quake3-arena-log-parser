@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_26_204330) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007f03f5f1b0d0>"
+    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007f23ec6764e0>"
     t.index ["name"], name: "index_death_means_on_name", unique: true
   end
 
