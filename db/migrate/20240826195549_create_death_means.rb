@@ -1,7 +1,7 @@
 class CreateDeathMeans < ActiveRecord::Migration[7.2]
   def change
     create_table :death_means do |t|
-      t.string :name
+      t.string :name,
 
       t.timestamps
     end
