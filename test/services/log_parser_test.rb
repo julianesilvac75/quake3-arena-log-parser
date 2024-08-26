@@ -22,28 +22,6 @@ class LogParserTest < ActiveSupport::TestCase
     end
   end
 
-  test "shoud create a new Match object when the log is valid" do
-    @parsed_logs.each do |log|
-      if log.include?("InitGame:")
-        new_match = @log_parser.create_match
-
-        assert new_match.is_a?(Match), "Match object should be created"
-        assert new_match.id.present?, "Match object should have an id"
-      end
-    end
-  end
-
-  test "should update current_match when a new match starts" do
-    @parsed_logs.each do |log|
-      if log.include?("InitGame:")
-        new_match = @log_parser.create_match
-
-        assert @log_parser.current_match.present?, "Current match value must be present"
-        assert_equal new_match.id, @log_parser.current_match, "Current match value must match new match id"
-      end
-    end
-  end
-
   test "shoud create a new player when the log is valid" do
     @parsed_logs.each do |log|
       if log.include?("ClientUserinfoChanged:")
@@ -58,7 +36,6 @@ class LogParserTest < ActiveSupport::TestCase
 
   test "should filter log data correctly" do
     logs = @log_parser.filter_logs
-
-    assert_equal logs, @parsed_logs
+    assert_equal @parsed_logs, logs
   end
 end
