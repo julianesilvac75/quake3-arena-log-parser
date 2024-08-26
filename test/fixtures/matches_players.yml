@@ -1,1 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  match_id: 1
+  player_id: 1
+  assigned_id: 1
+  name_used: "John"
+
+two:
+  id: 2
+  match_id: 2
+  player_id: 1
+  assigned_id: 1
+  name_used: "Mary"
