@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  match_id: one
+  killer_id: one
+  killed_id: one
+  death_mean: one
+
+two:
+  match_id: two
+  killer_id: two
+  killed_id: two
+  death_mean: two

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_26_195549) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_26_200319) do
   create_table "death_means", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -23,6 +23,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_26_195549) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["source_file"], name: "index_import_logs_on_source_file", unique: true
+  end
+
+  create_table "kills", force: :cascade do |t|
+    t.integer "match_id", null: false
+    t.integer "killer_id", null: false
+    t.integer "killed_id", null: false
+    t.integer "death_mean_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["death_mean_id"], name: "index_kills_on_death_mean_id"
+    t.index ["killed_id"], name: "index_kills_on_killed_id"
+    t.index ["killer_id"], name: "index_kills_on_killer_id"
+    t.index ["match_id"], name: "index_kills_on_match_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -48,6 +61,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_26_195549) do
     t.index ["name"], name: "index_players_on_name", unique: true
   end
 
+  add_foreign_key "kills", "death_means"
+  add_foreign_key "kills", "matches"
+  add_foreign_key "kills", "players", column: "killed_id"
+  add_foreign_key "kills", "players", column: "killer_id"
   add_foreign_key "matches_players", "matches"
   add_foreign_key "matches_players", "players"
 end
