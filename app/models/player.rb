@@ -1,6 +1,7 @@
 class Player < ApplicationRecord
   has_many :matches_players
   has_many :matches, through: :matches_players
+  has_many :kills
 
   validates :name, presence: true, uniqueness: true
 
