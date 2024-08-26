@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_26_200319) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_26_204330) do
   create_table "death_means", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007f03f5f1b0d0>"
+    t.index ["name"], name: "index_death_means_on_name", unique: true
   end
 
   create_table "import_logs", force: :cascade do |t|
@@ -27,7 +29,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_26_200319) do
 
   create_table "kills", force: :cascade do |t|
     t.integer "match_id", null: false
-    t.integer "killer_id", null: false
+    t.integer "killer_id"
     t.integer "killed_id", null: false
     t.integer "death_mean_id", null: false
     t.datetime "created_at", null: false
