@@ -12,6 +12,15 @@ class KillHandler
     get_killer_player
     get_killed_player
     get_death_mean
+
+    puts "#{@killer ? @killer.name : "<world>" } matou #{@killed.name} com o modo #{@death_mean.name}"
+
+    Kill.create(
+      match_id: @current_match,
+      killer: @killer,
+      killed: @killed,
+      death_mean: @death_mean
+    )
   end
 
   def get_death_mean
