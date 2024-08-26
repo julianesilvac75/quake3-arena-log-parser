@@ -11,6 +11,16 @@ class KillHandler
     get_kill_info
     get_killer_player
     get_killed_player
+    get_death_mean
+  end
+
+  def get_death_mean
+    death_mean = DeathMean.find_by_name(@death_mean)
+    if death_mean
+      @death_mean = death_mean
+    else
+      @death_mean = DeathMean.create(name: @death_mean)
+    end
   end
 
   def get_killer_player
