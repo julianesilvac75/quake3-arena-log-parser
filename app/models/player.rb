@@ -2,7 +2,7 @@ class Player < ApplicationRecord
   has_many :matches_players
   has_many :matches, through: :matches_players
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   def update_name(new_name)
     if Player.exists?(name: new_name)
