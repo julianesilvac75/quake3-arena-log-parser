@@ -17,7 +17,8 @@ class LogParser
       elsif line.include?(@logs_categories[1])
         handle_player(line)
       elsif line.include?(@logs_categories[2])
-        puts "Passou pelo include de #{@logs_categories[2]}"
+        @kill = KillHandler.new(line, @current_match)
+        @kill.handle
       end
     end
 
