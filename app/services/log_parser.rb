@@ -12,7 +12,8 @@ class LogParser
 
     logs.each do |line|
       if line.include?(@logs_categories[0])
-        create_match
+        new_match = Match.create
+        @current_match = new_match.id
         puts "iniciou jogo: #{@current_match}"
       elsif line.include?(@logs_categories[1])
         handle_player(line)
@@ -23,13 +24,6 @@ class LogParser
     end
 
     logs
-  end
-
-  def create_match
-      new_match = Match.create
-      @current_match = new_match.id
-
-      new_match
   end
 
   def handle_player(line)
