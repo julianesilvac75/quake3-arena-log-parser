@@ -46,12 +46,12 @@ class LogParserTest < ActiveSupport::TestCase
   test "shoud create a new player when the log is valid" do
     @parsed_logs.each do |log|
       if log.include?("ClientUserinfoChanged:")
-        regex = /ClientUserinfoChanged:\s(\d+)\sn([^\t\\]+)/
-        match_data = log.match(regex)
-        new_player = @log_parser.create_player
+        name_match = log.match(/n\\([^\\]+)\\t/)
+        # match_data = log.match(/ClientUserinfoChanged:\s(\d+)\sn([^\t\\]+)/)
+        new_player = @log_parser.create_player(log)
 
-        assert new_player.is_a?(Player), "Should be a Player object"
-        assert_equal new_player.name, match_data[2], "Match object should have an id"
+        assert new_player.is_a?(Player)
+        assert_equal new_player.name, name_match[1], "Match object should have an id"
       end
     end
   end
