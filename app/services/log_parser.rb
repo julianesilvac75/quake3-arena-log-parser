@@ -13,7 +13,7 @@ class LogParser
       if line.include?("InitGame:")
         create_match
       elsif line.include?("ClientUserinfoChanged")
-        "ClientUserinfoChanged"
+        create_player(line)
       elsif line.include?("Kill:")
         "kill"
       end
@@ -27,6 +27,20 @@ class LogParser
       @current_match = new_match.id
 
       new_match
+  end
+
+  def create_player(line)
+    name_match = line.match(/n\\([^\\]+)\\t/)
+    # match_data = line.match(/ClientUserinfoChanged:\s(\d+)\sn([^\t\\]+)/)
+    player_name = name_match[1]
+
+    player_object = Player.find_by(name: player_name)
+
+    if player_object == nil
+      Player.create(name: player_name)
+    else
+      player_object
+    end
   end
 
   def filter_logs
