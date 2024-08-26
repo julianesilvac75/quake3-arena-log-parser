@@ -10,6 +10,13 @@ class KillHandler
   def handle
     get_kill_info
     get_killer_player
+    get_killed_player
+  end
+
+  def get_killer_player
+    if @killer
+      @killer = Player.find_by_name(@killer)
+    end
   end
 
   def get_killer_player
