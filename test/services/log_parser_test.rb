@@ -1,4 +1,5 @@
 require "test_helper"
+require "mocha/minitest"
 
 class LogParserTest < ActiveSupport::TestCase
   def setup
@@ -53,5 +54,11 @@ class LogParserTest < ActiveSupport::TestCase
         assert_equal new_player.name, name_match[1], "Match object should have an id"
       end
     end
+  end
+
+  test "should filter log data correctly" do
+    logs = @log_parser.filter_logs
+
+    assert_equal logs, @parsed_logs
   end
 end
