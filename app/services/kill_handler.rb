@@ -32,10 +32,8 @@ class KillHandler
     end
   end
 
-  def get_killer_player
-    if @killer
-      @killer = Player.find_by_name(@killer)
-    end
+  def get_killed_player
+    @killed = Player.find_by_name(@killed)
   end
 
   def get_killer_player
