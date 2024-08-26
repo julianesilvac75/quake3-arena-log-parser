@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_26_132903) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_26_150742) do
   create_table "import_logs", force: :cascade do |t|
     t.string "source_file", null: false
     t.boolean "imported", default: false
@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_26_132903) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_players_on_name", unique: true
   end
 
   add_foreign_key "matches_players", "matches"
