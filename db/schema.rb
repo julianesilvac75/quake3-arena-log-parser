@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_26_175320) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_26_195549) do
+  create_table "death_means", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "import_logs", force: :cascade do |t|
     t.string "source_file", null: false
     t.boolean "imported", default: false
