@@ -1,2 +1,0 @@
-class Kill < ApplicationRecord
-end
