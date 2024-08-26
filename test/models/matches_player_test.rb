@@ -3,8 +3,8 @@ require "test_helper"
 class MatchesPlayerTest < ActiveSupport::TestCase
   def setup
     @match = Match.create!
-    @player = Player.create!(name: "John")
-    @matches_player = MatchesPlayer.new(match: @match, player: @player, assigned_id: 1)
+    @player = Player.create!(name: "Marcus")
+    @matches_player = MatchesPlayer.new(match: @match, player: @player, assigned_id: 1, name_used: "John")
   end
   test "should be valid with valid attributes" do
     assert @matches_player.valid?
