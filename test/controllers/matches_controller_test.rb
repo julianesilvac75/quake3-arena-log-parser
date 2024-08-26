@@ -1,5 +1,4 @@
 require "test_helper"
-require "mocha/minitest"
 
 class MatchesControllerTest < ActionDispatch::IntegrationTest
   fixtures :matches_players, :players, :matches
