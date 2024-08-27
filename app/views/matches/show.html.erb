@@ -1,0 +1,12 @@
+<h1>Match <%= @match.id %></h1>
+
+<div>
+  <h2>Players:</h2>
+  <ul>
+    <% @match.players.each do |player|%>
+      <li><%= @match.matches_players.find_by(player_id: player.id).name_used %></li>
+    <% end %>
+  </ul>
+</div>
+
+<%= link_to "Back to matches", matches_path%>
