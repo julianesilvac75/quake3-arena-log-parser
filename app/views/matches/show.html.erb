@@ -7,7 +7,15 @@
       <li><%= @match.matches_players.find_by(player_id: player.id).name_used %></li>
     <% end %>
   </ul>
-  <p>Total of Kills: <%= @match.kills.size %></p>
+</div>
+<h2>Total of Kills: <%= @match.kills.size %></h2>
+<div>
+  <h2>Kills by player:</h2>
+  <ul>
+    <% @match.players.each do |player| %>
+      <li><%= "#{@match.matches_players.find_by(player_id: player.id).name_used}: #{@match.kills.where(killer: player).size}" %></li>
+    <% end %>
+  </ul>
 </div>
 
 <%= link_to "Back to matches", matches_path%>
