@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "logs#index"
   get "logs", to: "logs#index"
   get "matches", to: "matches#index"
+  get "matches/:id", to: "matches#show"
   get "players", to: "players#index"
   # get "logs/parse", to: "logs#parse"
 
