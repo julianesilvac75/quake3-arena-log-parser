@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
   get "logs", to: "logs#index"
   get "players", to: "players#index"
+  get "death-means", to: "death_means#index"
   get "not_found", to: "errors#not_found"
 
   resources :matches
+  get "matches/:id/kills", to: "matches#kills"
   # get "logs/parse", to: "logs#parse"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
