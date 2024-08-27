@@ -1,0 +1,18 @@
+<h1>Kill Logs for Match <%= @match_id %></h1>
+<% if @kills.size == 0 %>
+  <p>No kills for this Match</p>
+<% else %>
+  <ul>
+  <% @kills.each do |kill| %>
+    <li>
+    <% if kill.killer %>
+      <%= "#{kill.killer.name} killed #{kill.killed.name} #{kill.death_mean.description}" %>
+    <% else %>
+      <%= "#{kill.killed.name} died #{kill.death_mean.description}" %>
+    <% end %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= link_to "Back to matches", matches_path %>
