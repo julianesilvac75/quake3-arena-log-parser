@@ -1,0 +1,14 @@
+<h1>Means of Death</h1>
+<%= link_to "Back to Home", root_path %>
+<ul>
+  <% @death_means.each do |death| %>
+    <li><%= death.name %></li>
+  <% end %>
+</ul>
+
+<h2>Deaths by Means</h2>
+<ul>
+  <% @death_means.each do |death| %>
+    <li><%= "#{death.name}: #{@kills.where(death_mean: death).size}" %></li>
+  <% end %>
+</ul>
