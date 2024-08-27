@@ -2,6 +2,8 @@
 
 one:
   name: "Rocket"
+  description: "by a rocket."
 
 two:
   name: "Falling"
+  description: "by a fall."
