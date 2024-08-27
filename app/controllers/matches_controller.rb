@@ -8,7 +8,15 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
 
     kills_by_player = KillsCalculator.new(@match)
-    @kills = kills_by_player.calculate_kills
+    @kills_result = kills_by_player.calculate_kills
+
+    @death_means = DeathMean.all
+    @kills = @match.kills
+  end
+
+  def kills
+    @kills = Match.find(params[:id]).kills
+    @match_id = params[:id]
   end
 
   private
