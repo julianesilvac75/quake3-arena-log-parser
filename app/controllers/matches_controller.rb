@@ -6,6 +6,9 @@ class MatchesController < ApplicationController
 
   def show
     @match = Match.find(params[:id])
+
+    kills_by_player = KillsCalculator.new(@match)
+    @kills = kills_by_player.calculate_kills
   end
 
   private
