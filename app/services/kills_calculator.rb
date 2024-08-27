@@ -1,6 +1,7 @@
 class KillsCalculator
   def initialize(match)
     @match = match
+    @death_means = []
     @kills_by_player = {}
   end
 
@@ -18,5 +19,15 @@ class KillsCalculator
     end
 
     @kills_by_player
+  end
+
+  def list_death_means
+    kills = @match.kills
+
+    kills.each do |kill|
+      @death_means << kill.death_means.name
+    end
+
+    @death_means
   end
 end
