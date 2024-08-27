@@ -3,11 +3,10 @@
 one:
   id: 1
   name: "Alice"
-
-three:
+two:
   id: 2
+  name: "Mary"
+three:
+  id: 3
   name: "John"
 
-two:
-  id: 3
-  name: "Mary"
