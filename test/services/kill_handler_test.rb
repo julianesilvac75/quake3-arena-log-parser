@@ -5,10 +5,8 @@ class KillHandlerTest < ActiveSupport::TestCase
   def setup
     @line_with_killer = "22:06 Kill: 2 3 7: John killed Mary by MOD_ROCKET_SPLASH"
     @match = Match.new
-    @killer = Player.new(name: "John")
-    @killer.id = 2
-    @killed = Player.new(name: "Mary")
-    @killed.id = 3
+    @killer = players(:three)
+    @killed = players(:two)
     @death_mean = DeathMean.new(name: "MOD_ROCKET_SPLASH")
 
     @kill_handler = KillHandler.new(@line_with_killer, 5)
