@@ -14,7 +14,6 @@ class LogParser
       if line.include?(@logs_categories[0])
         new_match = Match.create
         @current_match = new_match.id
-        puts "iniciou jogo: #{@current_match}"
       elsif line.include?(@logs_categories[1])
         handle_player(line)
       elsif line.include?(@logs_categories[2])
@@ -37,7 +36,7 @@ class LogParser
       matches_player = handle_matches_player(player_name, player_assigned_id)
       matches_player.player
     else
-      puts "Não conseguiu parsear: #{line}"
+      false
     end
   end
 
@@ -47,20 +46,13 @@ class LogParser
 
     if matches_player
       player = Player.find(matches_player.player_id)
-      puts "Antes de mudar: #{player.name}"
-      if player.update_name(player_name)
-        puts "Atualizado! Depois de mudar: #{player.name}"
-      else
-        puts "Não atualizado porque nome já está em uso. Player: #{player.name}"
-      end
+      player.update_name(player_name)
     else
       if player_by_name == nil
         player_by_name = Player.create(name: player_name)
-        puts "criou um novo player: #{player_by_name.name}"
       end
 
       matches_player = MatchesPlayer.create(match_id: @current_match, player: player_by_name, assigned_id: assigned_id, name_used: player_name)
-      puts "Player já existente entrou no jogo: #{matches_player.player.name}"
     end
 
     matches_player
