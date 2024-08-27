@@ -1,4 +1,5 @@
 <h1>Players</h1>
+<%= link_to "Back to Home", root_path%>
 
 <ul>
   <% @players.each do |player| %>
@@ -6,4 +7,13 @@
   <% end %>
 </ul>
 
-<%= link_to "Back to logs", root_path%>
+<div>
+  <h2>Total Kills by Player</h2>
+  <ul>
+  <% @players.each do |player| %>
+    <% kills = player.kills.where(killer: player).size %>
+    <% deaths = player.kills.where(killer: nil, killed: player).size %>
+    <li><%= "#{player.name}: #{kills - deaths}" %></li>
+  <% end %>
+  </ul>
+</div>
