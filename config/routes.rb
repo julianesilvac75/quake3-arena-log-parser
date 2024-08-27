@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root "logs#index"
+
   get "logs", to: "logs#index"
-  get "matches", to: "matches#index"
-  get "matches/:id", to: "matches#show"
   get "players", to: "players#index"
+  get "not_found", to: "errors#not_found"
+
+  resources :matches
   # get "logs/parse", to: "logs#parse"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
