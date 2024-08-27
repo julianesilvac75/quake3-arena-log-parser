@@ -1,4 +1,5 @@
 <h1>Match <%= @match.id %></h1>
+<%= link_to "Back to matches", matches_path%>
 
 <div>
   <h2>Players:</h2>
@@ -8,14 +9,27 @@
     <% end %>
   </ul>
 </div>
+
 <h2>Total of Kills: <%= @match.kills.size %></h2>
+
 <div>
   <h2>Kills by player:</h2>
   <ul>
     <% @match.players.each do |player| %>
-      <li><%= "#{@match.matches_players.find_by(player_id: player.id).name_used}: #{@kills[player.name]}" %></li>
+      <li><%= "#{@match.matches_players.find_by(player_id: player.id).name_used}: #{@kills_result[player.name]}" %></li>
     <% end %>
   </ul>
 </div>
 
-<%= link_to "Back to matches", matches_path%>
+<div>
+  <h2>Kills by Means</h2>
+  <ul>
+    <% @death_means.each do |death| %>
+      <li><%= "#{death.name}: #{@kills.where(death_mean: death).size }" %></li>
+    <% end %>
+  </u>
+</div>
+
+<h2>
+  <%= link_to "See Kill Logs", "/matches/#{@match.id}/kills" %>
+</h2>
