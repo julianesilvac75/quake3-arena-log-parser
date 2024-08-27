@@ -66,7 +66,7 @@ class KillHandlerTest < ActiveSupport::TestCase
   end
 
   test "should create a new death_mean object if it does not exist" do
-    new_death_mean = DeathMean.new(name: "Machinegun")
+    new_death_mean = DeathMean.new(name: "Machinegun", description: "by a machinegun")
     @kill_handler.instance_variable_set(:@death_mean, "Machinegun")
 
     DeathMean.expects(:create).returns(new_death_mean)
@@ -90,5 +90,13 @@ class KillHandlerTest < ActiveSupport::TestCase
     assert_equal kill.killer, @killer
     assert_equal kill.killed, @killed
     assert_equal kill.death_mean, @death_mean
+  end
+
+  test "should return correct death mean description" do
+    @kill_handler.instance_variable_set(:@death_mean, "MOD_TRIGGER_HURT")
+
+    description = @kill_handler.get_death_mean_description
+
+    assert_equal "by some environment danger.", description
   end
 end
