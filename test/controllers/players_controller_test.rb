@@ -3,13 +3,14 @@ require "mocha/minitest"
 
 class PlayersControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @mocked_objects = [ Player.new(name: "John"), Player.new(name: "Mary")]
+    @stubbed_objects = [ Player.new(name: "John"), Player.new(name: "Mary") ]
+
+    Player.expects(:all).returns(@stubbed_objects)
+
+    get players_path
   end
 
   test "should get to the players page" do
-    Player.expects(:all).returns(@mocked_objects)
-
-    get players_path
 
     assert_response :success
 
