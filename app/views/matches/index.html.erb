@@ -1,12 +1,12 @@
 <h1>Matches</h1>
-<%= link_to "Back to logs", root_path%>
+<%= link_to "Back to Home", root_path%>
 
-<p>
+<h2>
   Total of Matches: <%= @matches.size%>
-</p>
+</h2>
 
 <% @matches.each do |match| %>
   <div>
-    <h2><%= link_to "Match #{match.id}", match %></h2>
+    <h3><%= link_to "Match #{match.id}", match %></h3>
   </div>
 <% end%>
